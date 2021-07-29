@@ -1,0 +1,194 @@
+$border-gray: rgb(40,40,40);
+$text-gray: rgb(200, 200, 200);
+$background-primary: rgb(80, 80, 80);
+$background-secondary: rgb(100,100,100);
+
+.workout-create-button {
+    text-align: center;
+    border-radius: 10px;
+    background:$background-primary;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 3px;
+    color: $text-gray;
+    border-color: $border-gray;
+    margin: 20px 100px;
+    cursor: pointer;
+
+    &:hover {
+        color:rgb(240, 240, 240);
+        font-weight: 20px;
+    }
+}
+
+.workout-date-picker {
+    text-align: center;
+}
+
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 70px;
+    padding-right: 70px;
+    list-style-type: none;
+}
+
+.exercise-item {
+    font-family: 'Fira Sans', BlinkMacSystemFont, 'Helvetica Neue', -apple-system,  'Segoe UI',  'Oxygen', 'Ubuntu', 'Cantarell',  'Droid Sans', sans-serif;
+    margin-bottom: 5px;
+    font-size: 20px;
+    background:$background-primary;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 3px;
+    border-color: $border-gray;
+    color: $text-gray;
+}
+
+.exercise-details {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.exercise-delete-button {
+    flex:1;
+    position: absolute;
+    color: $background-primary;
+
+    :hover {
+        color: rgb(255, 150, 150);
+    }
+}
+
+.exercise-delete-button-hovered {
+    color: rgb(210, 90, 90);
+}
+
+.exercise-name {
+    flex: 1;
+    min-width: 150px;
+    font-size: 20px;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.set-count {
+    text-align: right;
+    min-width: 60px;
+}
+
+.set-drop-down-button {
+    font-size: 25;
+    color:rgb(40, 40, 40);
+}
+
+.add-exercise {
+    font-size: 18px;
+    padding-left: 100px;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    max-width: 150px;
+
+    input {
+        border-width: 0px 0px 2px 0px;
+        background-color: #c4e3e3;
+        font-size: 18px;
+        width: 150px;
+    }
+    
+    :focus {
+        outline: none;
+    }
+}
+
+.set-list {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-top-style: solid;
+    border-width: 2px;
+
+    background: $background-secondary;
+    border-color: $border-gray;
+}
+
+.set-delete-button {
+    flex: 1;
+    color: $background-secondary;
+
+    :hover {
+        color: rgb(255, 150, 150);
+    }
+}
+
+.set-delete-button-hovered {
+    color: rgb(210, 90, 90);
+}
+
+.add-set-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-height: 30px;
+    align-content: center;
+
+    :focus {
+        outline: rgb(160,160,160);
+    }
+}
+
+.add-set-form {
+    font-family: 'Fira Sans', BlinkMacSystemFont, 'Helvetica Neue', -apple-system,  'Segoe UI',  'Oxygen', 'Ubuntu', 'Cantarell',  'Droid Sans', sans-serif;
+    display: flex;
+    align-content: center;
+    text-align: center;
+
+    input {
+        width: 40px;
+        max-height: 21px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(40,40,40);
+        background: rgb(120, 120, 120);
+        font-size: 18px;
+        padding: 0;
+        align-self: center;
+        color: rgb(210, 210, 210);
+    }
+
+    :focus {
+        outline: none;
+    }
+}
+
+.add-set-text {
+    font-size: 22px;
+    align-self: center;
+}
+
+.set-item {
+    list-style-type: none;
+    display: flex;
+    justify-content: left;
+    padding-left: 60px;
+}
+
+.add-set-icon {
+    flex: 1;
+    color:rgb(210, 210, 210);
+}
+
+.hovered {
+    color:rgb(240, 240, 240);
+    font-weight: 20px;
+}
