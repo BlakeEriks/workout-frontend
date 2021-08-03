@@ -10,34 +10,42 @@ import {DateUtil} from '../util/DateUtil';
 
 const Workout = props => {
 
-    const [workout, setWorkout] = useState();
+    const [exists, setExists] = useState(false);
+    const [date, setDate] = useState();
+    const [workoutType, setWorkoutType] = useState();
+    const [exercises, setExercises] = useState();
+
+    const setWorkout = workout => {
+        setExists(true);
+        setDate(workout.date);
+        setWorkoutType(workout.workoutType);
+        setExercises(workout.exercises);
+    }
 
     useEffect( () => {
-        const workoutCallback = (status, data) => {
-            if (status !== 200) {
-                console.log('Error fetching workout for date: ' + props.selectedDate);
-            }
-            setWorkout(data);
-            console.log(workout);
-        }
-        WorkoutRestUtil.getByDate(DateUtil.formatDate(props.selectedDate), workoutCallback);
+        WorkoutRestUtil.getByDate(DateUtil.formatDate(props.selectedDate), (status, data) => {
+            if (status == 200) setWorkout(data);
+        }, () => {
+            setExists(false);
+        });
     }, [props.selectedDate]);
 
     const addExercise = exerciseName => {
         const newExercise = { uuid: uuidv4(), name: exerciseName, sets: [] };
-        setWorkout( prevWorkout => [...prevWorkout.exercises, newExercise] );
+        console.log(exercises);
+        setExercises([...exercises, newExercise]);
         WorkoutRestUtil.addExercise(DateUtil.formatDate(props.selectedDate), newExercise);
     }
 
     const deleteExercise = exerciseUuid => {
-        setWorkout( prevWorkout => [...prevWorkout.exercises.filter(exercise => exercise.uuid !== exerciseUuid)] );
+        setExercises([exercises.filter(exercise => exercise.uuid !== exerciseUuid)]);
         ExerciseRestUtil.deleteExercise(exerciseUuid);
     }
 
     return (
-        (workout) ? 
+        (exists) ? 
         <ul className="exercise-list">
-            {workout.exercises != null && workout.exercises.map(exercise => (
+            {exercises != null && exercises.map(exercise => (
                 <Exercise
                     key={exercise.uuid}
                     {...exercise}
@@ -46,7 +54,7 @@ const Workout = props => {
             ))}
             <ExerciseAdd addExercise={addExercise} />
         </ul>
-        : <WorkoutCreate />
+        : <WorkoutCreate setWorkout={setWorkout}/>
         
     )
 };

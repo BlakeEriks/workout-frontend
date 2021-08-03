@@ -7,7 +7,7 @@ const ESCAPE_KEY = 27;
 
 const ExerciseAdd = props => {
 
-    const [name, setName] = useState("");
+    const [name, setName] = useState('');
     const [addMode, setAddMode] = useState(false);
 
     const handleChange = event => {
@@ -19,7 +19,7 @@ const ExerciseAdd = props => {
         if (name !== "") {
             props.addExercise(name);
         }
-        setName();
+        setName('');
         setAddMode(false);
     }
 

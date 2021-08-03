@@ -4,6 +4,7 @@ const BASE_REST_URI = "http://localhost:8080/api/v1/";
 const BASE_WORKOUT_REST_URI = BASE_REST_URI + 'workout/';
 const BASE_EXERCISE_REST_URI = BASE_REST_URI + 'exercise/';
 const FORWARD_SLASH = '/';
+const ADD = 'add';
 const EXERCISES = 'exercises';
 const NAMES = "names";
 const SETS = 'sets';
@@ -19,14 +20,18 @@ const spaceToUnderscore = string => {
 
 export class WorkoutRestUtil {
 
-    static getAll(callback) {
-        console.log(BASE_WORKOUT_REST_URI);
-        axios.get(BASE_WORKOUT_REST_URI)
-            .then(response => callback(response.status, response.data));
+    static create(workout) {
+        axios.post(BASE_WORKOUT_REST_URI + ADD, workout);
     }
 
-    static getByDate(date, callback) {
+    static getByDate(date, callback, throws) {
         axios.get(BASE_WORKOUT_REST_URI + date)
+            .then(response => callback(response.status, response.data))
+            .catch(() => {console.clear(); throws();});
+    }
+
+    static getAll(callback) {
+        axios.get(BASE_WORKOUT_REST_URI)
             .then(response => callback(response.status, response.data));
     }
 

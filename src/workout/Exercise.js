@@ -41,8 +41,6 @@ const Exercise = props => {
                 <SetAdd addSet={addSet}/>
             </ul>
             }
-            
-            {/* <SetList showSets={showSets} sets={sets} addSet={addSet} deleteSet={deleteSet}/> */}
         </li>
     );
 };
